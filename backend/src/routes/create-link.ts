@@ -1,3 +1,4 @@
+import { ClientError } from "@/errors/client-error";
 import { prisma } from "@/lib/prisma";
 
 import { FastifyInstance } from "fastify";
@@ -26,7 +27,7 @@ export async function createLink(app: FastifyInstance) {
     })
 
     if (!trip) {
-      throw new Error('Trips not found')
+      throw new ClientError('Trips not found')
     }
 
     const link = await prisma.link.create({
