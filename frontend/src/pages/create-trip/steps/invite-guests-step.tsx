@@ -1,4 +1,5 @@
 import { ArrowRight, UserRoundPlus } from "lucide-react"
+import { Button } from "../../../components/button";
 
 interface InviteGuestsStepProps {
   openGuestsModal: () => void;
@@ -16,7 +17,7 @@ export const InviteGuestsStep = ({
       <button onClick={openGuestsModal} className="flex items-center gap-2 flex-1 text-left">
         <UserRoundPlus className="size-5 text-zinc-400" />
         {emailsToInvite.length > 0 ? (
-          <span>
+          <span className="text-zinc-100 text-lg flex-1">
             {emailsToInvite.length} pessoa(s) convidado(s)
           </span>
         ) : (
