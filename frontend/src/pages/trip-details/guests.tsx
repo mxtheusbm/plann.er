@@ -11,13 +11,15 @@ interface Participant {
   is_confirmed: boolean;
 }
 
-export const Guests = () => {
-  const { tripId } = useParams()
-  const [participants, setParticipants] = useState<Participant[]>([])
+export function Guests() {
+  const { tripId } = useParams();
+  const [participants, setParticipants] = useState<Participant[]>([]);
 
   useEffect(() => {
-    api.get(`trips/${tripId}/participants`).then(response => setParticipants(response.data.participants))
-  }, [tripId])
+    api
+      .get(`trips/${tripId}/participants`)
+      .then((response) => setParticipants(response.data.participants));
+  }, [tripId]);
 
   return (
     <div className="space-y-6">
@@ -25,9 +27,14 @@ export const Guests = () => {
 
       <div className="space-y-5">
         {participants.map((participant, index) => (
-          <div key={participant.id} className="flex items-center justify-between gap-4">
+          <div
+            key={participant.id}
+            className="flex items-center justify-between gap-4"
+          >
             <div className="space-y-1.5">
-              <span className="block font-medium text-zinc-100">{participant.name ?? `Convidado ${index}`}</span>
+              <span className="block font-medium text-zinc-100">
+                {participant.name ?? `Convidado ${index}`}
+              </span>
               <span className="block text-sm text-zinc-400 truncate">
                 {participant.email}
               </span>
@@ -47,5 +54,5 @@ export const Guests = () => {
         Gerenciar convidados
       </Button>
     </div>
-  )
+  );
 }
