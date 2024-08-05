@@ -97,6 +97,8 @@ export function CreateTripPage() {
             isGuestsInputOpen={isGuestsInputOpen}
             closeGuestsInput={() => setIsGuestsInputOpen(false)}
             openGuestsInput={() => setIsGuestsInputOpen(true)}
+            hasDestination={!!destination}
+            hasDate={!!eventStartAndEndDates}
             setDestination={setDestination}
             setEventStartAndEndDates={setEventStartAndEndDates}
             eventStartAndEndDates={eventStartAndEndDates}

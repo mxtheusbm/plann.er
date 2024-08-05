@@ -8,6 +8,8 @@ import { format } from "date-fns";
 interface DestinationAndDateStepProps {
   isGuestsInputOpen: boolean;
   eventStartAndEndDates: DateRange | undefined;
+  hasDestination: boolean;
+  hasDate: boolean;
   closeGuestsInput: () => void;
   openGuestsInput: () => void;
   setDestination: (destination: string) => void;
@@ -18,6 +20,8 @@ export function DestinationAndDateStep({
   closeGuestsInput,
   isGuestsInputOpen,
   openGuestsInput,
+  hasDestination,
+  hasDate,
   setDestination,
   setEventStartAndEndDates,
   eventStartAndEndDates,
@@ -97,7 +101,10 @@ export function DestinationAndDateStep({
           <Settings2 className="size-5" />
         </Button>
       ) : (
-        <Button onClick={openGuestsInput}>
+        <Button
+          onClick={openGuestsInput}
+          disabled={!hasDestination || !hasDate}
+        >
           Continuar
           <ArrowRight className="size-5" />
         </Button>
